@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid #d5d5d5;
+        }
+        td, th {
+            border: 1px solid #d5d5d5;
+            padding: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/patients">Patients</a> |
+            <a href="/patients/elderly">Elder Patients</a>
+        </nav>
+    </header>
+    <h1>List of Patients</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Patient Number</th>
+                <th>Full Names</th>
+                <th>Is OutPatient</th>
+                <th>Email</th>
+                <th>Contact Phone</th>
+                <th>Date of Birth</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="patient, counter : ${patients}">
+                <th scope="row" th:text="${counter.count}+${'.'}"></th>
+                <td th:text="${patient.patientNumber}"></td>
+                <td th:text="${patient.fullNames}"></td>
+                <td th:text="${patient.isOutPatient}"></td>
+                <td th:text="${patient.emailAddress}"></td>
+                <td th:text="${patient.contactPhone}"></td>
+                <td th:text="${patient.dateOfBirth}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
